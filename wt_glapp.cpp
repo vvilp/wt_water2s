@@ -15,6 +15,8 @@ Wt_App_Interface *app;
 void init()
 {
     app = new Wt_FluidLB();
+    
+    app->init();
 }
 
 void display(void)

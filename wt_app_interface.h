@@ -12,8 +12,9 @@
 class Wt_App_Interface
 {
 public:
+     virtual void init()    = 0;
      virtual void display() = 0;
-     virtual void update() = 0;
+     virtual void update()  = 0;
     
 };
 

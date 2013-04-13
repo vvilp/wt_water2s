@@ -9,6 +9,12 @@
 #include <GLUT/glut.h>
 #include "wt_config.h"
 #include <cmath>
+#include "wt_LB_Grid.h"
+void Wt_FluidLB::init()
+{
+    Wt_LB_Grid lb;
+    lb.init(100);
+}
 
 void Wt_FluidLB::display()
 {

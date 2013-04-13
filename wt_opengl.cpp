@@ -29,7 +29,6 @@ void Wt_OpenGL_Mouse_Motion_Func(int x, int y)
     Wt_OpenGL::mouse_y = Wt_OpenGL::win_h - y;
 }
 
-
 //----------------------------------------------------------------------------
 bool Wt_OpenGL::mouse_right_press = false;
 bool Wt_OpenGL::mouse_left_press = false;

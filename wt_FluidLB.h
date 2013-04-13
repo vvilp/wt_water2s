@@ -13,7 +13,7 @@
 class Wt_FluidLB : public Wt_App_Interface
 {
 public:
-    
+    virtual void init();
     virtual void display();
     virtual void update();
 };
