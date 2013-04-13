@@ -10,7 +10,7 @@
 #define __wt_water3__Wt_GLApp__
 
 #include "wt_config.h"
-
+#include "wt_app_interface.h"
 class Wt_GLApp
 {
 public:
@@ -19,6 +19,7 @@ public:
 
     
     void run();
+
 };
 
 #endif /* defined(__wt_water3__Wt_GLApp__) */

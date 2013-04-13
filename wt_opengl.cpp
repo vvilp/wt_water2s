@@ -34,8 +34,9 @@ void Wt_OpenGL::init(int win_w, int win_h)
 
 }
 
-void Wt_OpenGL::run(void display_func(void))
+void Wt_OpenGL::run(void display(void), void update(void))
 {
-    glutDisplayFunc(display_func);
+    glutDisplayFunc(display);
+    glutIdleFunc(update);
     glutMainLoop();
 }

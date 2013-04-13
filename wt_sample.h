@@ -9,13 +9,15 @@
 #ifndef __wt_water3__wt_sample__
 #define __wt_water3__wt_sample__
 
+#include "wt_app_interface.h"
 
-
-class Wt_Sample {
+class Wt_Sample : public Wt_App_Interface{
     
     
 public:
-    void display();
+    virtual void display();
+    virtual void update();
+
 };
 
 #endif /* defined(__wt_water3__wt_sample__) */

@@ -16,5 +16,5 @@ int main(int argc, char** argv)
 {
     Wt_GLApp app;
     app.run();
-    return 0;
+    return 0; 
 }

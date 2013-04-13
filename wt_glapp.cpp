@@ -9,25 +9,38 @@
 #include "Wt_glapp.h"
 #include "wt_opengl.h"
 #include "wt_sample.h"
+#include "wt_FluidLB.h"
+Wt_App_Interface *app;
+
+void init()
+{
+    app = new Wt_FluidLB();
+}
+
+void display(void)
+{
+    app->display();
+}
+
+void update(void)
+{
+    app->update();
+}
+
+//-------------------------------
 Wt_GLApp::Wt_GLApp()
 {
-    
+
 }
 Wt_GLApp::~Wt_GLApp()
 {
     
 }
-
-void display(void)
-{
-    Wt_Sample sample;
-    sample.display();
-}
-
 void Wt_GLApp::run()
 {
+    init();
     Wt_OpenGL gl;
     gl.init(600, 600);
-    gl.run(display);
+    gl.run(display, update);
 }
 

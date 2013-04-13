@@ -31,3 +31,8 @@ void Wt_Sample::display()
     glLoadIdentity();
     glutSwapBuffers();
 }
+
+void Wt_Sample::update()
+{
+    
+}

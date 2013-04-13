@@ -21,7 +21,7 @@ public:
     
 public:
     void init(int win_w, int win_h);
-    void run(void display_func(void));
+    void run(void display(void), void update(void));
 };
 
 
