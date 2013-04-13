@@ -16,8 +16,13 @@ public:
     ~Wt_OpenGL();
     
 public:
-    int win_w;
-    int win_h;
+    static int win_w;
+    static int win_h;
+    
+    static bool mouse_right_press;
+    static bool mouse_left_press;
+    static int mouse_x;
+    static int mouse_y;
     
 public:
     void init(int win_w, int win_h);
