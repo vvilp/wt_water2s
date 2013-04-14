@@ -36,3 +36,13 @@ void Wt_Sample::update()
 {
     
 }
+
+void Wt_Sample::mouse(int button, int state, int x, int y)
+{
+    //app->mouse(button, state, x, y);
+}
+
+void Wt_Sample::motion(int x, int y)
+{
+    //app->mouse_motion(x, y);
+}

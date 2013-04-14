@@ -15,7 +15,8 @@ public:
      virtual void init()    = 0;
      virtual void display() = 0;
      virtual void update()  = 0;
-    
+     virtual void mouse(int button, int state, int x, int y) = 0;
+     virtual void motion(int x, int y) = 0;
 };
 
 #endif /* defined(__wt_water3__wt_app_interface__) */

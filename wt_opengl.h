@@ -21,12 +21,15 @@ public:
     
     static bool mouse_right_press;
     static bool mouse_left_press;
+    static int mouse_press_x;
+    static int mouse_press_y;
     static int mouse_x;
     static int mouse_y;
     
 public:
     void init(int win_w, int win_h);
-    void run(void display(void), void update(void));
+    void run(void display(void), void update(void), void mouse(int , int , int , int), void motion(int , int));
+    static void draw_partical(float x, float y);
 };
 
 

@@ -21,13 +21,16 @@ public:
     float **density;
     float ***vel;
     float ***f;
+    float ***f_;
 public:
     void   init(int grid_count);
     float  feq(int index, float density, float vel[2]);
     void   update_density_vel();
     void   stream();
     void   collide();
-    
+    void   update();
+    void   set_vel(int x, int y, float vel[2]);
+    float* get_vel(int x, int y);
 };
 
 #endif

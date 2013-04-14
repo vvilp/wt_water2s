@@ -17,6 +17,8 @@ class Wt_Sample : public Wt_App_Interface{
 public:
     virtual void display();
     virtual void update();
+    virtual void mouse(int button, int state, int x, int y);
+    virtual void motion(int x, int y);
 
 };
 
