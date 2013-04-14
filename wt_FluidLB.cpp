@@ -11,7 +11,7 @@
 #include <cstdlib>
 void Wt_FluidLB::init()
 {
-    grid_count = 150;
+    grid_count = 100;
     lb = new Wt_LB_Grid();
     lb->init(grid_count);
     
@@ -86,12 +86,16 @@ void Wt_FluidLB::motion(int x, int y)
 void Wt_FluidLB::particals_update()
 {
     for(int i = 0 ; i < partical_count ; i++) {
+        //particals[i].y -= 1;
+        
         int gridx = particals[i].x * grid_count / Wt_OpenGL::win_w;
         int gridy = particals[i].y * grid_count / Wt_OpenGL::win_h;
         if(gridx >=0 && gridx < grid_count && gridy >=0 && gridy < grid_count) {
             float *vel = lb->get_vel(gridx, gridy);
                 particals[i].x += 100 * vel[0];
                 particals[i].y += 100 * vel[1];
+            
+                
         }
     }
 

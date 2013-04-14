@@ -10,7 +10,7 @@
 #include "wt_config.h"
 int   Wt_LB_Grid::c[9][2] = {{0,0}, {1,0}, {0,1}, {-1,0}, {0,-1}, {1,1}, {-1,1}, {-1,-1}, {1,-1}};
 float Wt_LB_Grid::w[9]    = {4.0/9.0, 1.0/9.0, 1.0/9.0, 1.0/9.0, 1.0/9.0, 1.0/36.0, 1.0/36.0, 1.0/36.0, 1.0/36.0};
-float Wt_LB_Grid::omga    = 0.75;
+float Wt_LB_Grid::omga    = 0.5;
 void Wt_LB_Grid::init(int grid_count)
 {
     this -> grid_count = grid_count;
@@ -61,6 +61,8 @@ void Wt_LB_Grid::update_density_vel()
             }
             vel[x][y][0] /= density[x][y];
             vel[x][y][1] /= density[x][y];
+            
+            //vel[x][y][1] -= 0.002;
         }
     }
 }
@@ -72,14 +74,14 @@ void Wt_LB_Grid::collide()
         for (int y = 0; y < grid_count; y++) {
             
             if(x == 0 || y == 0 || x == grid_count - 1 || y == grid_count - 1 ) {
-                int op[9] = {0, 3, 4, 1, 2, 7, 8, 5, 6};
-                double tmp[9];
-                for (int k=0; k<9; k++) {
-                    tmp[k] = f[x][y][k];
-                }
-                for (int k=0; k<9; k++) {
-                    f[x][y][k] = tmp[op[k]];
-                }
+//                int op[9] = {0, 3, 4, 1, 2, 7, 8, 5, 6};
+//                double tmp[9];
+//                for (int k=0; k<9; k++) {
+//                    tmp[k] = f[x][y][k];
+//                }
+//                for (int k=0; k<9; k++) {
+//                    f[x][y][k] = tmp[op[k]];
+//                }
                 density[x][y] = 0;
                 vel[x][y][0] = vel[x][y][1] = 0;
             } else {
