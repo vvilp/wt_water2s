@@ -48,24 +48,21 @@ float Wt_LB_Grid::feq(int index, float density, float vel[2])
 
 void Wt_LB_Grid::update_density_vel()
 {
-//    for (int x = 0; x < grid_count; x++) {
-//        for(int y = 0 ; y < grid_count ; y++) {
-//            density[x][y] = 0;
-//            vel[x][y][0] = 0;
-//            vel[x][y][1] = 0;
-//            for(int i = 0 ; i < 9 ; i++) {
-//                density[x][y] += f[x][y][i];
-//                vel[x][y][0]  += f[x][y][i] * c[i][0];
-//                vel[x][y][1]  += f[x][y][i] * c[i][1];
-//
-//            }
-//            vel[x][y][0] /= density[x][y];
-//            vel[x][y][1] /= density[x][y];
-//            
-//            //Dbg("grid vel x : %f , y : %f \n", vel[x][y][0], vel[x][y][1]);
-//            //Dbg("density[x][y] : %f \n", density[x][y]);
-//        }
-//    }
+    for (int x = 0; x < grid_count; x++) {
+        for(int y = 0 ; y < grid_count ; y++) {
+            density[x][y] = 0;
+            vel[x][y][0] = 0;
+            vel[x][y][1] = 0;
+            for(int i = 0 ; i < 9 ; i++) {
+                density[x][y] += f[x][y][i];
+                vel[x][y][0]  += f[x][y][i] * c[i][0];
+                vel[x][y][1]  += f[x][y][i] * c[i][1];
+
+            }
+            vel[x][y][0] /= density[x][y];
+            vel[x][y][1] /= density[x][y];
+        }
+    }
 }
 
 
@@ -74,27 +71,23 @@ void Wt_LB_Grid::collide()
     for (int x = 0; x < grid_count; x++) {
         for (int y = 0; y < grid_count; y++) {
             
-            density[x][y] = 0;
-            for(int i = 0 ; i < 9 ; i++) {
-                density[x][y] += f[x][y][i];
+            if(x == 0 || y == 0 || x == grid_count - 1 || y == grid_count - 1 ) {
+                int op[9] = {0, 3, 4, 1, 2, 7, 8, 5, 6};
+                double tmp[9];
+                for (int k=0; k<9; k++) {
+                    tmp[k] = f[x][y][k];
+                }
+                for (int k=0; k<9; k++) {
+                    f[x][y][k] = tmp[op[k]];
+                }
+                density[x][y] = 0;
+                vel[x][y][0] = vel[x][y][1] = 0;
+            } else {
+                for(int i = 0 ; i < 9 ; i++) {
+                    f[x][y][i] = (1.0 - omga) * f[x][y][i] + omga * feq(i,density[x][y],vel[x][y]);
+                }
             }
             
-            vel[x][y][0] = 0;
-            vel[x][y][1] = 0;
-            for(int i = 0 ; i < 9 ; i++) {
-                vel[x][y][0]  += f[x][y][i] * c[i][0];
-                vel[x][y][1]  += f[x][y][i] * c[i][1];
-                
-            }
-            vel[x][y][0] /= density[x][y];
-            vel[x][y][1] /= density[x][y];
-            
-            
-            for(int i = 0 ; i < 9 ; i++) {
-                    //f[x][y][i] = (1.0 - omga) * f[x][y][i] + omga * feq(i,density[x][y],vel[x][y]);
-                f[x][y][i] *= (1.0 - omga);
-                f[x][y][i] += omga * feq(i , density[x][y] , vel[x][y]);
-            }
         }
     }
 }
@@ -125,25 +118,12 @@ void Wt_LB_Grid::update()
     update_density_vel();
     collide();
     stream();
-    
-//    for (int x = 0; x < grid_count; x++) {
-//        for (int y = 0; y < grid_count; y++) {
-//            if(x % 100 == 0 && y % 100 == 0) {
-//				printf("x : %d , y : %d | u[x][y][0] : %f , u[x][y][1] : %f \n", x , y, vel[x][y][0] , vel[x][y][1]);
-//			}
-//        }
-//    }
-    
 }
 
 void Wt_LB_Grid::set_vel(int x, int y, float vel[2])
 {
-    //this -> vel[x][y][0] += vel[0];
-    //this -> vel[x][y][1] += vel[1];
-    //Dbg("set vel x : %f , y : %f \n", vel[0], vel[1]);
     for(int i = 0 ; i < 9 ; i++) {
         f[x][y][i] = feq(i, density[x][y], vel);
-        Dbg("f[x][y][i] : %f \n", f[x][y][i]);
     }
 }
 

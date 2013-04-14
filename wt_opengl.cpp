@@ -76,7 +76,7 @@ void Wt_OpenGL::run(void display(void), void update(void), void mouse(int , int 
 
 void Wt_OpenGL::draw_partical(float x, float y)
 {
-    glColor3f(1.0f, 1.0f, 1.0f);
+    glColor3f(1.0f, 0.0f, 0.0f);
     glPointSize(1.0f);
     glBegin(GL_POINTS);
     glVertex2f(x, y);
