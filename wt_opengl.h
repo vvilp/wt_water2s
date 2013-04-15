@@ -15,7 +15,10 @@ public:
     Wt_OpenGL();
     ~Wt_OpenGL();
     
+    static Wt_OpenGL* getInstance();
+    
 public:
+    static Wt_OpenGL* instance;
     static int win_w;
     static int win_h;
     
@@ -30,6 +33,13 @@ public:
     void init(int win_w, int win_h);
     void run(void display(void), void update(void), void mouse(int , int , int , int), void motion(int , int));
     static void draw_partical(float x, float y);
+    static void draw_line(float x, float y, float x1, float y1);
+
+public:
+    int frames;
+    long t1,t2;
+    void update_fps();
+    
 };
 
 

@@ -11,6 +11,9 @@
 
 #include "wt_config.h"
 #include "wt_app_interface.h"
+#include "wt_opengl.h"
+#include "wt_sample.h"
+#include "wt_FluidLB.h"
 class Wt_GLApp
 {
 public:
@@ -19,6 +22,7 @@ public:
 
     
     void run();
+private:
 
 };
 

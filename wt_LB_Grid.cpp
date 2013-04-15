@@ -62,7 +62,11 @@ void Wt_LB_Grid::update_density_vel()
             vel[x][y][0] /= density[x][y];
             vel[x][y][1] /= density[x][y];
             
-            //vel[x][y][1] -= 0.002;
+            float max_vel = 0.5;
+            if(vel[x][y][0] > max_vel) vel[x][y][0] = max_vel;
+            if(vel[x][y][1] > max_vel) vel[x][y][1] = max_vel;
+            if(vel[x][y][0] < -max_vel) vel[x][y][0] = -max_vel;
+            if(vel[x][y][1] < -max_vel) vel[x][y][1] = -max_vel;
         }
     }
 }

@@ -7,9 +7,7 @@
 //
 
 #include "Wt_glapp.h"
-#include "wt_opengl.h"
-#include "wt_sample.h"
-#include "wt_FluidLB.h"
+
 Wt_App_Interface *app;
 
 void init()
@@ -26,6 +24,8 @@ void display(void)
 void update(void)
 {
     app->update();
+    
+    Wt_OpenGL::getInstance()->update_fps();
 }
 
 void mouse(int button, int state, int x, int y)
@@ -41,7 +41,7 @@ void motion(int x, int y)
 //-------------------------------
 Wt_GLApp::Wt_GLApp()
 {
-
+   
 }
 Wt_GLApp::~Wt_GLApp()
 {
@@ -49,10 +49,8 @@ Wt_GLApp::~Wt_GLApp()
 }
 void Wt_GLApp::run()
 {
-    
-    Wt_OpenGL gl;
-    gl.init(600, 600);
+    Wt_OpenGL::getInstance()->init(600, 600);
     init();
-    gl.run(display, update, mouse, motion);
+    Wt_OpenGL::getInstance()->run(display, update, mouse, motion);
 }
 

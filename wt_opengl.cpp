@@ -39,14 +39,27 @@ int  Wt_OpenGL::mouse_x = 0;
 int  Wt_OpenGL::mouse_y = 0;
 int  Wt_OpenGL::win_w = 0;
 int  Wt_OpenGL::win_h = 0;
+Wt_OpenGL* Wt_OpenGL::instance = NULL;
+
 Wt_OpenGL::Wt_OpenGL()
 {
+    t1 = t2 = 0;
+    frames = 0;
     
 }
 
 Wt_OpenGL::~Wt_OpenGL()
 {
     
+}
+
+Wt_OpenGL* Wt_OpenGL::getInstance()
+{
+    if(instance == NULL) {
+        instance = new Wt_OpenGL();
+    }
+    
+    return instance;
 }
 
 void Wt_OpenGL::init(int win_w, int win_h)
@@ -74,11 +87,33 @@ void Wt_OpenGL::run(void display(void), void update(void), void mouse(int , int 
     glutMainLoop();
 }
 
+void Wt_OpenGL::update_fps()
+{
+    frames++;
+    t1 = glutGet(GLUT_ELAPSED_TIME);
+    if(t1 - t2 >= 1000) {
+        char str_fps [128];
+        sprintf(str_fps, "FPS : %d", frames);
+        glutSetWindowTitle(str_fps);
+        frames = 0;
+        t2 = t1;
+    }
+}
+
 void Wt_OpenGL::draw_partical(float x, float y)
 {
     glColor3f(0.0f, 0.0f, 1.0f);
     glPointSize(1.0f);
     glBegin(GL_POINTS);
     glVertex2f(x, y);
+    glEnd();
+}
+
+void Wt_OpenGL::draw_line(float x, float y, float x1, float y1)
+{
+    glColor3f(0.0f, 0.0f, 0.0f);
+    glBegin(GL_LINES);
+    glVertex2f(x, y);
+    glVertex2f(x1, y1);
     glEnd();
 }

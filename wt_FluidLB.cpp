@@ -14,9 +14,7 @@ void Wt_FluidLB::init()
     grid_count = 100;
     lb = new Wt_LB_Grid();
     lb->init(grid_count);
-    
     srand(unsigned(time(0)));
-    
     partical_count = 50000;
     particals = new wt_partical[partical_count];
     for(int i = 0 ; i < partical_count ; i++) {
@@ -35,8 +33,27 @@ void Wt_FluidLB::display()
     glClear ( GL_COLOR_BUFFER_BIT );
     
     for(int i = 0 ; i < partical_count ; i++) {
-        Wt_OpenGL::draw_partical(particals[i].x, particals[i].y);
+       Wt_OpenGL::draw_partical(particals[i].x, particals[i].y);
     }
+    
+    float cell_w = Wt_OpenGL::win_w / grid_count;
+    float cell_h = Wt_OpenGL::win_h / grid_count;
+//    for(int i = 0 ; i < grid_count ; i++) {
+//        Wt_OpenGL::draw_line(0, i * cell_h, Wt_OpenGL::win_w, i * cell_h);
+//        Wt_OpenGL::draw_line(i * cell_w, 0 ,  i * cell_w, Wt_OpenGL::win_h);
+//    }
+    
+//    for(int x = 0 ; x < grid_count ; x++) {
+//        for(int y = 0 ; y < grid_count ; y++) {
+//            float *vel = lb->get_vel(x, y);
+//            
+//            float cell_x = x * cell_w + cell_w / 2;
+//            float cell_y = y * cell_h + cell_h / 2;
+//            
+//            Wt_OpenGL::draw_line(cell_x, cell_y, cell_x + vel[0] * 2000.0, cell_y + vel[1] * 2000.0);
+//        }
+//    }
+    
     glLoadIdentity();
     glutSwapBuffers();
 }
