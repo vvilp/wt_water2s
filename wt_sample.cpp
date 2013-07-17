@@ -7,9 +7,20 @@
 //
 
 #include "wt_sample.h"
+#ifdef MAC
 #include <GLUT/glut.h>
+#endif
+
+#ifdef LINUX
+#include <GL/glut.h>
+#endif
 #include "wt_config.h"
 #include <cmath>
+
+void Wt_Sample::init()
+{
+    
+}
 void Wt_Sample::display()
 {
     int i; double angle;

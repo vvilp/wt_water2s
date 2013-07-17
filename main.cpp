@@ -9,7 +9,7 @@
 
 
 
-#include "Wt_glapp.h"
+#include "wt_glapp.h"
 #include <cstdio>
 
 int main(int argc, char** argv)

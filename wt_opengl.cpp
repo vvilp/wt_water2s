@@ -8,7 +8,13 @@
 
 #include "wt_opengl.h"
 #include "wt_config.h"
+#ifdef MAC
 #include <GLUT/glut.h>
+#endif
+
+#ifdef LINUX
+#include <GL/glut.h>
+#endif
 
 
 void Wt_OpenGL_Mouse_Func(int button, int state, int x, int y)

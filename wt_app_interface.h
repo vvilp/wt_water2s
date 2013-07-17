@@ -11,6 +11,9 @@
 
 class Wt_App_Interface
 {
+	public:
+	Wt_App_Interface(){}
+	~Wt_App_Interface(){}
 public:
      virtual void init()    = 0;
      virtual void display() = 0;

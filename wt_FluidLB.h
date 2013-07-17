@@ -9,7 +9,15 @@
 #define __wt_water3__wt_FluidLB__
 
 #include "wt_app_interface.h"
+
+#ifdef MAC
 #include <GLUT/glut.h>
+#endif
+
+#ifdef LINUX
+#include <GL/glut.h>
+#endif
+
 #include "wt_config.h"
 #include <cmath>
 #include "wt_LB_Grid.h"
@@ -22,10 +30,11 @@ struct wt_partical
 class Wt_FluidLB : public Wt_App_Interface
 {
 public:
+    Wt_FluidLB(){}
+    ~Wt_FluidLB(){}
     virtual void init();
     virtual void display();
     virtual void update();
-    //void mouse_update();
     virtual void mouse(int button, int state, int x, int y);
     virtual void motion(int x, int y);
     void particals_update();

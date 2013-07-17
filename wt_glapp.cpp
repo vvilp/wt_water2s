@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 vvilp. All rights reserved.
 //
 
-#include "Wt_glapp.h"
+#include "wt_glapp.h"
 
 Wt_App_Interface *app;
 

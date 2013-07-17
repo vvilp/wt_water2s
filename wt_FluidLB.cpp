@@ -9,6 +9,8 @@
 #include "wt_opengl.h"
 #include <ctime>
 #include <cstdlib>
+
+
 void Wt_FluidLB::init()
 {
     grid_count = 100;
