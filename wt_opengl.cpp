@@ -108,7 +108,7 @@ void Wt_OpenGL::update_fps()
 
 void Wt_OpenGL::draw_partical(float x, float y)
 {
-    glColor3f(0.0f, 0.0f, 1.0f);
+    glColor3f(1.0f, 0.0f, 0.0f);
     glPointSize(1.0f);
     glBegin(GL_POINTS);
     glVertex2f(x, y);

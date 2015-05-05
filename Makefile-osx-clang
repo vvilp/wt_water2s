@@ -4,15 +4,15 @@ OUTPUT_PATH = ./
 SOURCE_PATH = ./
 EXE = $(OUTPUT_PATH)testc
 
-COPT = -DLINUX
+COPT = -DMAC
 CCMD = clang++
 OBJFLAG = -o
 EXEFLAG = -o
 
 # INCLUDES = -I../.includes
 INCLUDES =
-LIBS = -lm -lglut -lGL -lGLU 
-#LIBPATH = -L"/System/Library/Frameworks/OpenGL.framework/Libraries" 
+#LIBS = -lm -lglut -lGL -lGLU 
+LIBPATH = -L"/System/Library/Frameworks/OpenGL.framework/Libraries" -framework GLUT -framework OpenGL
 
 CPPFLAGS = $(COPT) $(INCLUDES) 
 LDFLAGS = $(LIBPATH) $(LIBS)
